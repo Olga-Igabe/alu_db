@@ -33,6 +33,13 @@ INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date) VA
 UPDATE Students 
 SET email = 'diana.prince@alu.edu' 
 WHERE student_id = 4;
+
+-- 4. DELETE Statement
+-- Removing a student record (e.g., student dropped out)
+DELETE FROM Students 
+WHERE student_id = 5;
+
+
 -- ===================================================
 -- Member: Olga Igabe
 -- Table: Classroom
