@@ -54,13 +54,13 @@ CREATE TABLE Students (
 );
 
 -- 2. INSERT INTO Statement (5 Sample Rows)
--- Note: Assumes classroom_ids 101, 102, 103 already exist in the Classroom table.
+
 INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date) VALUES
-(1, 'Alice Johnson', 'alice.j@alu.edu', 101, '2026-05-11'),
-(2, 'Bob Smith', 'bob.smith@alu.edu', 102, '2026-05-12'),
-(3, 'Charlie Kamau', 'charlie.k@alu.edu', 101, '2026-05-11'),
-(4, 'Diana Prince', 'diana.p@alu.edu', 103, '2026-05-14'),
-(5, 'Emmanuel Mensah', 'e.mensah@alu.edu', 102, '2026-05-15');
+(1, 'Alice Johnson', 'alice.j@alu.edu', 1, '2026-05-11'),
+(2, 'Bob Smith', 'bob.smith@alu.edu', 2, '2026-05-12'),
+(3, 'Charlie Kamau', 'charlie.k@alu.edu', 1, '2026-05-11'),
+(4, 'Diana Prince', 'diana.p@alu.edu', 3, '2026-05-14'),
+(5, 'Emmanuel Mensah', 'e.mensah@alu.edu', 2, '2026-05-15');
 
 -- 3. UPDATE Statement
 -- Updating Diana's email address
@@ -121,10 +121,14 @@ CREATE TABLE Courses (
 );
 
 INSERT INTO Courses (course_name, course_code, faculty_id, classroom_id) VALUES
-('Introduction to linux', 'CS101', 1, 1);
+('Introduction to Linux', 'CS101', 1, 1),
+('Calculus I', 'MATH101', 2, 2),
+('Business Strategy', 'BUS101', 3, 3),
+('Data Structures', 'CS201', 4, 1),
+('Applied Ethics', 'ETH101', 5, 4);
 
-UPDATE Courses SET course_name = 'Introduction to python' WHERE course_id = 1;
-DELETE FROM Courses WHERE course_id = 1;
+UPDATE Courses SET course_name = 'Introduction to Python' WHERE course_id = 1;
+DELETE FROM Courses WHERE course_id = 5;
 SELECT * FROM Courses WHERE faculty_id IS NOT NULL;
 -- ===================================================
 -- Member: Raul
@@ -142,10 +146,10 @@ CREATE TABLE Extra_Curricular_Activities (
 -- Sample data
 INSERT INTO Extra_Curricular_Activities (activity_name, category, faculty_advisor_id) VALUES
 ('Debate Club', 'Academic', 1),
-('Basketball Team', 'Sports', 2),
+('Basketball Team', 'Sports', 4),
 ('Coding Club', 'Technology', 1),
 ('Drama Society', 'Arts', 3),
-('Chess Club', 'Academic', 2);
+('Chess Club', 'Academic', 5);
 
 -- Update: change category of Chess Club
 UPDATE Extra_Curricular_Activities
