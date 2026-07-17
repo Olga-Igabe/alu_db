@@ -3,6 +3,21 @@
 -- ===================================================
 create DATABASE alu_db;
 use alu_db;
+
+-- ==========================================
+-- Member A: Tharcisse Irasubiza
+-- ==========================================
+
+-- 1. CREATE TABLE Statement
+CREATE TABLE Students (
+    student_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    classroom_id INT,
+    enrollment_date DATE NOT NULL,
+    PRIMARY KEY (student_id),
+    FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
+);
 -- ===================================================
 -- Member: Olga Igabe
 -- Table: Classroom
