@@ -20,7 +20,7 @@ the group's join and aggregate queries.
 | Member | Table |
 |---|---|
 | Olga Igabe |  Classroom |
-| [Member B] | Students |
+| Tharcisse Irasubiza | Students |
 | [Member C] | Faculty |
 | [Member D] | Courses |
 | [Member E] | Extra_Curricular_Activities + junction tables (Student_Courses, Student_Activities) |
