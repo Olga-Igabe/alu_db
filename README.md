@@ -22,8 +22,9 @@ the group's join and aggregate queries.
 | Olga Igabe |  Classroom |
 | Tharcisse Irasubiza | Students |
 | Niyonkuru Kabanda Chris  | Faculty |
-| MAaxime | Courses |
-| Raul | Extra_Curricular_Activities + junction tables (Student_Courses, Student_Activities) |
+| Maxim Olga Ibereho | Courses |
+| Raul Junior Irakiza Ruzigana | Extra_Curricular_Activities + junction tables (Student_Courses, Student_Activities) |
+
 
 ## Normalization notes
 
