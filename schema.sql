@@ -3,6 +3,49 @@
 -- ===================================================
 create DATABASE alu_db;
 use alu_db;
+
+-- ==========================================
+-- Member A: Tharcisse Irasubiza
+-- ==========================================
+
+-- 1. CREATE TABLE Statement
+CREATE TABLE Students (
+    student_id INT NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    classroom_id INT,
+    enrollment_date DATE NOT NULL,
+    PRIMARY KEY (student_id),
+    FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
+);
+
+-- 2. INSERT INTO Statement (5 Sample Rows)
+-- Note: Assumes classroom_ids 101, 102, 103 already exist in the Classroom table.
+INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date) VALUES
+(1, 'Alice Johnson', 'alice.j@alu.edu', 101, '2026-05-11'),
+(2, 'Bob Smith', 'bob.smith@alu.edu', 102, '2026-05-12'),
+(3, 'Charlie Kamau', 'charlie.k@alu.edu', 101, '2026-05-11'),
+(4, 'Diana Prince', 'diana.p@alu.edu', 103, '2026-05-14'),
+(5, 'Emmanuel Mensah', 'e.mensah@alu.edu', 102, '2026-05-15');
+
+-- 3. UPDATE Statement
+-- Updating Diana's email address
+UPDATE Students 
+SET email = 'diana.prince@alu.edu' 
+WHERE student_id = 4;
+
+-- 4. DELETE Statement
+-- Removing a student record (e.g., student dropped out)
+DELETE FROM Students 
+WHERE student_id = 5;
+
+-- 5. SELECT Query with a WHERE Clause
+-- Finding all students enrolled on the first day of the term
+SELECT student_id, name, email, classroom_id 
+FROM Students 
+WHERE enrollment_date = '2026-05-11';
+
+
 -- ===================================================
 -- Member: Olga Igabe
 -- Table: Classroom
