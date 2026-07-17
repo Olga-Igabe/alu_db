@@ -18,6 +18,16 @@ CREATE TABLE Students (
     PRIMARY KEY (student_id),
     FOREIGN KEY (classroom_id) REFERENCES Classroom(classroom_id)
 );
+
+-- 2. INSERT INTO Statement (5 Sample Rows)
+-- Note: Assumes classroom_ids 101, 102, 103 already exist in the Classroom table.
+INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date) VALUES
+(1, 'Alice Johnson', 'alice.j@alu.edu', 101, '2026-05-11'),
+(2, 'Bob Smith', 'bob.smith@alu.edu', 102, '2026-05-12'),
+(3, 'Charlie Kamau', 'charlie.k@alu.edu', 101, '2026-05-11'),
+(4, 'Diana Prince', 'diana.p@alu.edu', 103, '2026-05-14'),
+(5, 'Emmanuel Mensah', 'e.mensah@alu.edu', 102, '2026-05-15');
+
 -- ===================================================
 -- Member: Olga Igabe
 -- Table: Classroom
