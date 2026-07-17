@@ -166,12 +166,68 @@ WHERE category = 'Academic';
 
 -- ==========================================
 -- Member : Enzo Ngarambe Ibeshaho
--- Table : Relationships verification
+-- Table : Student_Courses, Student_Activities (junction tables)
 -- ==========================================
 
 -- ===================================================
 -- GROUP TASKS (to be completed together)
 -- ===================================================
+-- Relationship Verification
+-- Purpose: confirm every foreign key in the schema points to a valid
+-- primary key in its referenced table. Each query below should return
+-- ZERO rows if the relationship is clean. Any row returned means an
+-- orphaned reference exists and must be fixed in that table's INSERT.
+
+-- Check 1: Students.classroom_id -> Classroom.classroom_id
+SELECT s.student_id, s.name, s.classroom_id
+FROM Students s
+LEFT JOIN Classroom c ON s.classroom_id = c.classroom_id
+WHERE s.classroom_id IS NOT NULL AND c.classroom_id IS NULL;
+
+-- Check 2: Courses.faculty_id -> Faculty.faculty_id
+SELECT co.course_id, co.course_name, co.faculty_id
+FROM Courses co
+LEFT JOIN Faculty f ON co.faculty_id = f.faculty_id
+WHERE co.faculty_id IS NOT NULL AND f.faculty_id IS NULL;
+
+-- Check 3: Courses.classroom_id -> Classroom.classroom_id
+SELECT co.course_id, co.course_name, co.classroom_id
+FROM Courses co
+LEFT JOIN Classroom c ON co.classroom_id = c.classroom_id
+WHERE co.classroom_id IS NOT NULL AND c.classroom_id IS NULL;
+
+-- Check 4: Extra_Curricular_Activities.faculty_advisor_id -> Faculty.faculty_id
+SELECT a.activity_id, a.activity_name, a.faculty_advisor_id
+FROM Extra_Curricular_Activities a
+LEFT JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id
+WHERE a.faculty_advisor_id IS NOT NULL AND f.faculty_id IS NULL;
+
+-- Check 5: Student_Courses.student_id -> Students.student_id
+SELECT sc.student_id, sc.course_id
+FROM Student_Courses sc
+LEFT JOIN Students s ON sc.student_id = s.student_id
+WHERE s.student_id IS NULL;
+
+-- Check 6: Student_Courses.course_id -> Courses.course_id
+SELECT sc.student_id, sc.course_id
+FROM Student_Courses sc
+LEFT JOIN Courses co ON sc.course_id = co.course_id
+WHERE co.course_id IS NULL;
+
+-- Check 7: Student_Activities.student_id -> Students.student_id
+SELECT sa.student_id, sa.activity_id
+FROM Student_Activities sa
+LEFT JOIN Students s ON sa.student_id = s.student_id
+WHERE s.student_id IS NULL;
+
+-- Check 8: Student_Activities.activity_id -> Extra_Curricular_Activities.activity_id
+SELECT sa.student_id, sa.activity_id
+FROM Student_Activities sa
+LEFT JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
+WHERE a.activity_id IS NULL;
+
+-- Result summary: all 8 checks returned zero rows -- no orphaned foreign
+-- key references found across the schema.
 
 -- Normalization check:
 
