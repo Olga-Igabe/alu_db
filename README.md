@@ -24,6 +24,7 @@ the group's join and aggregate queries.
 | Niyonkuru Kabanda Chris  | Faculty |
 | Maxim Olga Ibereho | Courses |
 | Raul Junior Irakiza Ruzigana | Extra_Curricular_Activities + junction tables (Student_Courses, Student_Activities) |
+| Enzo Ibeshaho Ngarambe | Relationships verification |
 
 
 ## Normalization notes
