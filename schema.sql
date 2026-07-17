@@ -174,15 +174,44 @@ WHERE category = 'Academic';
 -- ===================================================
 
 -- Normalization check:
--- [Write the group's paragraph here once all tables are reviewed]
 
--- Join query 1:
+-- Each table stores only attributes that describe its own entity directly
+-- (e.g. Students stores student info, Faculty stores faculty info), and
+-- shared/repeated data is not duplicated across tables. Relationships
+-- between entities are expressed through foreign keys (Students ->
+-- Classroom, Courses -> Faculty/Classroom, Activities -> Faculty) rather
+-- than by copying data. The many-to-many relationships (students to
+-- courses, students to activities) are handled through dedicated junction
+-- tables (Student_Courses, Student_Activities) rather than repeating
+-- student or course/activity data inside either table, which avoids
+-- duplication and keeps each fact stored in exactly one place.
 
+-- Join query 1: Student enrolled in a course, taught by faculty, in a classroom
 
--- Join query 2:
+SELECT s.name AS student_name, c.course_name, f.name AS faculty_name, cl.room_number
+FROM Student_Courses sc
+JOIN Students s ON sc.student_id = s.student_id
+JOIN Courses c ON sc.course_id = c.course_id
+JOIN Faculty f ON c.faculty_id = f.faculty_id
+JOIN Classroom cl ON c.classroom_id = cl.classroom_id;
 
+-- Join query 2: Student participates in an activity, advised by faculty
 
--- Join query 3:
+SELECT s.name AS student_name, a.activity_name, f.name AS advisor_name
+FROM Student_Activities sa
+JOIN Students s ON sa.student_id = s.student_id
+JOIN Extra_Curricular_Activities a ON sa.activity_id = a.activity_id
+JOIN Faculty f ON a.faculty_advisor_id = f.faculty_id;
 
+-- Join query 3: Which classroom each course is held in, and which building it's in
 
--- Aggregate query:
+SELECT c.course_name, cl.room_number, cl.building
+FROM Courses c
+JOIN Classroom cl ON c.classroom_id = cl.classroom_id;
+
+-- Aggregate query: number of students enrolled in each course
+
+SELECT c.course_name, COUNT(sc.student_id) AS student_count
+FROM Courses c
+LEFT JOIN Student_Courses sc ON c.course_id = sc.course_id
+GROUP BY c.course_name;
