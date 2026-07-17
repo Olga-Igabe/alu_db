@@ -80,9 +80,31 @@ SELECT * FROM Classroom
 WHERE building = 'Science Block';
 
 -- ===================================================
--- Member:
+-- Member: Niyonkuru Kabanda chris 
 -- Table: Faculty
 -- ===================================================
+CREATE TABLE Faculty (
+    faculty_id INT PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    department VARCHAR(100) NOT NULL
+);
+
+INSERT INTO Faculty (faculty_id, name, email, department)
+VALUES
+    (1, 'Dr. Aline Uwase', 'aline.uwase@alu.edu', 'Computer Science'),
+    (2, 'Dr. Eric Niyonsaba', 'eric.niyonsaba@alu.edu', 'Mathematics'),
+    (3, 'Prof. Grace Mukamana', 'grace.mukamana@alu.edu', 'Business'),
+    (4, 'Dr. Kevin Habimana', 'kevin.habimana@alu.edu', 'Computer Science'),
+    (5, 'Prof. Diane Ingabire', 'diane.ingabire@alu.edu', 'Ethics & Leadership');
+
+UPDATE Faculty
+SET department = 'Computer Science'
+WHERE faculty_id = 4;
+DELETE FROM Faculty
+WHERE faculty_id = 2;
+SELECT * FROM Faculty
+WHERE department = 'Computer Science';
 
 -- ===================================================
 -- Member: 
