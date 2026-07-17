@@ -229,6 +229,37 @@ WHERE a.activity_id IS NULL;
 -- Result summary: all 8 checks returned zero rows -- no orphaned foreign
 -- key references found across the schema.
 
+
+-- ===================================================
+-- Member: Enzo Ngarambe Ibeshaho
+-- Tables: Student_Courses, Student_Activities (junction tables)
+-- ===================================================
+CREATE TABLE Student_Courses (
+    student_id INT,
+    course_id INT,
+    PRIMARY KEY (student_id, course_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (course_id) REFERENCES Courses(course_id)
+);
+INSERT INTO Student_Courses (student_id, course_id) VALUES
+(1, 1),
+(1, 2),
+(2, 3),
+(3, 1),
+(4, 4);
+CREATE TABLE Student_Activities (
+    student_id INT,
+    activity_id INT,
+    PRIMARY KEY (student_id, activity_id),
+    FOREIGN KEY (student_id) REFERENCES Students(student_id),
+    FOREIGN KEY (activity_id) REFERENCES Extra_Curricular_Activities(activity_id)
+);
+INSERT INTO Student_Activities (student_id, activity_id) VALUES
+(1, 1),
+(2, 2),
+(3, 3),
+(4, 5),
+(1, 5);
 -- Normalization check:
 
 -- Each table stores only attributes that describe its own entity directly
@@ -271,3 +302,13 @@ SELECT c.course_name, COUNT(sc.student_id) AS student_count
 FROM Courses c
 LEFT JOIN Student_Courses sc ON c.course_id = sc.course_id
 GROUP BY c.course_name;
+
+-- Referential integrity checks (should all return 0 rows if everything is clean)
+SELECT * FROM Students WHERE classroom_id NOT IN (SELECT classroom_id FROM Classroom);
+SELECT * FROM Courses WHERE faculty_id NOT IN (SELECT faculty_id FROM Faculty);
+SELECT * FROM Courses WHERE classroom_id NOT IN (SELECT classroom_id FROM Classroom);
+SELECT * FROM Extra_Curricular_Activities WHERE faculty_advisor_id NOT IN (SELECT faculty_id FROM Faculty);
+SELECT * FROM Student_Courses WHERE student_id NOT IN (SELECT student_id FROM Students);
+SELECT * FROM Student_Courses WHERE course_id NOT IN (SELECT course_id FROM Courses);
+SELECT * FROM Student_Activities WHERE student_id NOT IN (SELECT student_id FROM Students);
+SELECT * FROM Student_Activities WHERE activity_id NOT IN (SELECT activity_id FROM Extra_Curricular_Activities);
