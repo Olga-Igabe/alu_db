@@ -4,11 +4,45 @@
 create DATABASE alu_db;
 use alu_db;
 
+-- ===================================================
+-- Member: Olga Igabe
+-- Table: Classroom
+-- ===================================================
+CREATE TABLE Classroom (
+    classroom_id INT PRIMARY KEY,
+    room_number VARCHAR(10) NOT NULL,
+    building VARCHAR(50) NOT NULL,
+    capacity INT NOT NULL
+);
+
+-- Insert sample rows
+INSERT INTO Classroom (classroom_id, room_number, building, capacity)
+VALUES
+    (1, '108', 'Social Commons', 30),
+    (2, '210', 'Entreprise Commons', 25),
+    (3, '203', 'Science Block', 40),
+    (4, '304', 'Leadership Center', 35),
+    (5, '105', 'Arts Block', 20);
+
+-- UPDATE statement
+UPDATE Classroom
+SET capacity = 45
+WHERE classroom_id = 3;
+
+-- DELETE statement
+DELETE FROM Classroom
+WHERE classroom_id = 5;
+
+-- SELECT query with WHERE clause
+SELECT * FROM Classroom
+WHERE building = 'Science Block';
+
+
 -- ==========================================
--- Member A: Tharcisse Irasubiza
+-- Member : Tharcisse Irasubiza
+-- Table : Students
 -- ==========================================
 
--- 1. CREATE TABLE Statement
 CREATE TABLE Students (
     student_id INT NOT NULL,
     name VARCHAR(100) NOT NULL,
@@ -44,40 +78,6 @@ WHERE student_id = 5;
 SELECT student_id, name, email, classroom_id 
 FROM Students 
 WHERE enrollment_date = '2026-05-11';
-
-
--- ===================================================
--- Member: Olga Igabe
--- Table: Classroom
--- ===================================================
-CREATE TABLE Classroom (
-    classroom_id INT PRIMARY KEY,
-    room_number VARCHAR(10) NOT NULL,
-    building VARCHAR(50) NOT NULL,
-    capacity INT NOT NULL
-);
-
--- Insert sample rows
-INSERT INTO Classroom (classroom_id, room_number, building, capacity)
-VALUES
-    (1, '108', 'Social Commons', 30),
-    (2, '210', 'Entreprise Commons', 25),
-    (3, '203', 'Science Block', 40),
-    (4, '304', 'Leadership Center', 35),
-    (5, '105', 'Arts Block', 20);
-
--- UPDATE statement
-UPDATE Classroom
-SET capacity = 45
-WHERE classroom_id = 3;
-
--- DELETE statement
-DELETE FROM Classroom
-WHERE classroom_id = 5;
-
--- SELECT query with WHERE clause
-SELECT * FROM Classroom
-WHERE building = 'Science Block';
 
 -- ===================================================
 -- Member:
