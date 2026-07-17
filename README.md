@@ -19,8 +19,8 @@ the group's join and aggregate queries.
 
 | Member | Table |
 |---|---|
-| Olga Igabe | Students, Classroom |
-| [Member B] | Classroom |
+| Olga Igabe |  Classroom |
+| [Member B] | Students |
 | [Member C] | Faculty |
 | [Member D] | Courses |
 | [Member E] | Extra_Curricular_Activities + junction tables (Student_Courses, Student_Activities) |
