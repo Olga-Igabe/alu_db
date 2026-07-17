@@ -28,6 +28,11 @@ INSERT INTO Students (student_id, name, email, classroom_id, enrollment_date) VA
 (4, 'Diana Prince', 'diana.p@alu.edu', 103, '2026-05-14'),
 (5, 'Emmanuel Mensah', 'e.mensah@alu.edu', 102, '2026-05-15');
 
+-- 3. UPDATE Statement
+-- Updating Diana's email address
+UPDATE Students 
+SET email = 'diana.prince@alu.edu' 
+WHERE student_id = 4;
 -- ===================================================
 -- Member: Olga Igabe
 -- Table: Classroom
