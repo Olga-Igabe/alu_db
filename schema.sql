@@ -164,6 +164,11 @@ WHERE activity_name = 'Drama Society';
 SELECT * FROM Extra_Curricular_Activities
 WHERE category = 'Academic';
 
+-- ==========================================
+-- Member : Enzo Ngarambe Ibeshaho
+-- Table : Relationships verification
+-- ==========================================
+
 -- ===================================================
 -- GROUP TASKS (to be completed together)
 -- ===================================================
