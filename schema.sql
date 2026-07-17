@@ -39,6 +39,12 @@ WHERE student_id = 4;
 DELETE FROM Students 
 WHERE student_id = 5;
 
+-- 5. SELECT Query with a WHERE Clause
+-- Finding all students enrolled on the first day of the term
+SELECT student_id, name, email, classroom_id 
+FROM Students 
+WHERE enrollment_date = '2026-05-11';
+
 
 -- ===================================================
 -- Member: Olga Igabe
