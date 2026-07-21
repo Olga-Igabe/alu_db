@@ -122,7 +122,7 @@ CREATE TABLE Courses (
 
 INSERT INTO Courses (course_name, course_code, faculty_id, classroom_id) VALUES
 ('Introduction to Linux', 'CS101', 1, 1),
-('Calculus I', 'MATH101', 2, 2),
+('Calculus I', 'MATH101', NULL, 2),
 ('Business Strategy', 'BUS101', 3, 3),
 ('Data Structures', 'CS201', 4, 1),
 ('Applied Ethics', 'ETH101', 5, 4);
