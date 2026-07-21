@@ -1,7 +1,7 @@
 -- ===================================================
 -- INDIVIDUAL TASK (CREATING TABLES AND INSERTING DATA)
 -- ===================================================
-create DATABASE alu_db;
+CREATE DATABASE IF NOT EXISTS alu_db;
 use alu_db;
 
 -- ===================================================
